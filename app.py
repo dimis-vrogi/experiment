@@ -109,20 +109,6 @@ if st.button("Υπολογισμός"):
     st.write(f"**Μεταβολή Ορμής (Δp):** {delta_p:.3f} N·s")
     st.write(f"**Μεταβολή Ταχύτητας (Δv):** {delta_v:.3f} m/s")
 
-    # Download CSV
-    results = {
-        "Material": material,
-        "Elasticity_used": elasticity,
-        "Predicted_Force_N": pred_force,
-        "Predicted_Collision_Time_s": pred_time,
-        "Delta_p_Ns": delta_p,
-        "Delta_v_m_s": delta_v
-    }
-    res_df = pd.DataFrame([results])
-    csv_bytes = res_df.to_csv(index=False).encode("utf-8")
-    st.download_button("Κατέβασε τα αποτελέσματα (CSV)", data=csv_bytes,
-                       file_name="prediction_results.csv", mime="text/csv")
-
 # --- Correlation heatmap ---
 st.header("Heatmap Συσχετίσεων (Correlation Heatmap)")
 fig, ax = plt.subplots(figsize=(8,6))
